@@ -109,6 +109,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            min-width: 120px;
         }
 
         .partner-logo img {
@@ -117,6 +118,24 @@
             width: auto;
             height: auto;
             object-fit: contain;
+        }
+
+        /* Fallback for missing images */
+        .partner-logo .logo-text {
+            font-weight: 600;
+            font-size: 14px;
+            color: #9A2AA0;
+            text-align: center;
+            display: none;
+        }
+
+        .partner-logo img[alt]:empty::after {
+            content: attr(alt);
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #9A2AA0;
+            text-align: center;
         }
 
         .partner-logo:hover {
@@ -911,13 +930,16 @@
                 
                 <div class="partners">
                     <div class="partner-logo">
-                        <img src="images/logos/eu-logo.png" alt="European Union" loading="lazy">
+                        <img src="images/logos/eu-logo.png" alt="European Union" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="logo-text">European Union</div>
                     </div>
                     <div class="partner-logo">
-                        <img src="images/logos/tein-logo.png" alt="TEIN*CC" loading="lazy">
+                        <img src="images/logos/tein-logo.png" alt="TEIN*CC" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="logo-text">TEIN*CC</div>
                     </div>
                     <div class="partner-logo">
-                        <img src="images/logos/asia-connect-logo.png" alt="Asia@Connect" loading="lazy">
+                        <img src="images/logos/asia-connect-logo.png" alt="Asia@Connect" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="logo-text">Asia@Connect</div>
                     </div>
                 </div>
             </div>
